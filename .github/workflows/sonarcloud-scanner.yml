@@ -21,10 +21,21 @@ jobs:
 
       - name: Install Gradle
         run: |
-          # Install Gradle wrapper
-          ./gradle wrapper
+          # Install Gradle
+          curl -s "https://get.sdkman.io" | bash
+          source "$HOME/.sdkman/bin/sdkman-init.sh"
+          sdk install gradle
+
+      - name: Make Gradle Wrapper Executable
+        run: |
           # Make Gradle wrapper script executable
           chmod +x ./gradlew
+
+      - name: Build and Test with JaCoCo
+        run: |
+          # Replace these commands with your build and test commands using JaCoCo
+          ./gradlew clean build
+          ./gradlew jacocoTestReport
 
       - name: Upload JaCoCo Report to SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
