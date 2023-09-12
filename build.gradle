@@ -1,31 +1,26 @@
 plugins {
     id 'java'
     id 'jacoco'
+    id 'org.sonarqube' version '4.0.0.2929'
 }
+
+group 'com.tom'
+version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
+dependencies {
+    testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+}
+
 jacocoTestReport {
     reports {
-        xml.enabled = true
+        xml.required = true
     }
 }
-
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.4'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.4'
+test.finalizedBy jacocoTestReport
+tasks.named('sonarqube').configure {
+    dependsOn test
 }
-
-compileJava.options.encoding = 'UTF-8'
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
-
-
