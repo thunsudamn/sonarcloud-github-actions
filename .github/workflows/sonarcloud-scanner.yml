@@ -36,7 +36,7 @@ jobs:
           echo "sonar.exclusions=node_modules/**" >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
 
       - name: Run SonarCloud analysis
-        uses: sonarsource/sonarcloud-github-action@main
+        uses: sonarsource/sonarcloud-github-action@master
         with:
           projectBaseDir: https://github.com/thunsudamn/sonarcloud-github-actions.git
           args: >
