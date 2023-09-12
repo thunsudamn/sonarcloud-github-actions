@@ -28,8 +28,8 @@ jobs:
       - name: Configure SonarCloud properties
         run: |
           echo "sonar.host.url=https://sonarcloud.io" >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
-          echo "sonar.organization=your-organization-key" >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
-          echo "sonar.projectKey=your-project-key" >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
+          echo "sonar.organization=thunsudamn" >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
+          echo "sonar.projectKey=thunsudamn" >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
           echo "sonar.login=${{ secrets.SONARQUBE_TOKEN }}" >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
           echo "sonar.sources=." >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
           echo "sonar.language=js" >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
