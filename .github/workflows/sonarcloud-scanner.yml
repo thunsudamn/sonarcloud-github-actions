@@ -20,6 +20,9 @@ jobs:
           distribution: 'adopt'  # Specify the distribution, e.g., 'adopt', 'adopt-openj9', 'adopt-hotspot', etc.
           cache: gradle
 
+      - name: Generate gradle wrapper files
+        run: gradle wrapper
+      
       - name: Make gradlew executable
         run: chmod +x ./gradlew
         
