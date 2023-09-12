@@ -19,11 +19,10 @@ jobs:
           node-version: 14
           
       - name: Install dependencies
-        run: |
-          npm install --save-dev jest
+        run: npm install --save-dev jest
 
       - name: Run tests with coverage
-        run: npm test -- --coverage
+        run: npm test -- --coverage --config=jest.config.js
 
       - name: SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
