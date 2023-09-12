@@ -5,7 +5,11 @@
   "author": "Thunsudamn",
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"No tests yet\"" 
+    "test": "test": "jest"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": ["lcov", "text", "html"]
   },
   "dependencies": {
     "express": "^4.17.1",
