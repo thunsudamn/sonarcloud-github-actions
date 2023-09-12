@@ -1,16 +1,16 @@
-let http = require('http');
+const express =  require('express');
+const app =  express();
+const port =  8080
 
-http.createServer(function(req,res){
-    if (req.url == '/') {
-        res.writeHead(200, { 'Content-Type': 'text/html' });     
-        res.write('<html><body><p>This is home Page.</p></body></html>');
-        res.end();
-    }
-    else if (req.url == "/hello") {
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write('<html><body><p>Hello NodeJS from thunsudamn.</p></body></html>');
-        res.end();
-    }
-    else
-        res.end('Invalid Request!');
-}).listen(1234, () => console.log('Server running on localhost:1234...')) ;
+app.get('/', (req, res) => {
+    return res.status(200).json({ 
+      nome:  'Learn SonarQube code coverage',
+      status: true 
+    });
+});
+
+let server = app.listen(port, () => {
+    console.log(`Application server running on ${port}`);
+});
+
+module.exports  = server;
