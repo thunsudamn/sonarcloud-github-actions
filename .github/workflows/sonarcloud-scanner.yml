@@ -17,13 +17,14 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '11'  # Use the appropriate Java version
-          distribution: 'adopt'
+          distribution: 'adopt'  # Specify the distribution, e.g., 'adopt', 'adopt-openj9', 'adopt-hotspot', etc.
 
-      - name: Build and Test with JaCoCo
+      - name: Install Gradle
         run: |
-          # Replace these commands with your build and test commands using JaCoCo
-          ./gradlew clean build
-          ./gradlew jacocoTestReport
+          # Install Gradle wrapper
+          ./gradle wrapper
+          # Make Gradle wrapper script executable
+          chmod +x ./gradlew
 
       - name: Upload JaCoCo Report to SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
