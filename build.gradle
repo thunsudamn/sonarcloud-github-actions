@@ -1,24 +1,33 @@
-plugins {
-    id 'java'
-    id 'jacoco'
-}
+apply plugin: 'java'
+apply plugin: 'jacoco'
 
 jacoco {
-    toolVersion = '0.8.7'
+    toolVersion = "0.8.7" // Use the appropriate Jacoco version
 }
 
-test {
-    finalizedBy jacocoTestReport
-}
-
-task customReport(type: JacocoReport) {
-    // Other Jacoco configuration
-
-    // Enable or disable report types
+// Define a custom Jacoco report task
+task customJacocoReport(type: JacocoReport, dependsOn: ["test"]) {
     reports {
         xml.enabled = true
-        html.enabled = true
-        // Other report types
+        html.enabled = false // You can enable or disable other report formats as needed
+    }
+
+    // Define where the Jacoco XML report will be generated
+    def coverageDestination = file("$buildDir/reports/jacoco/xml")
+    executionData = files("$buildDir/jacoco/test.exec")
+    outputDirectories.from(files(sourceSets.main.output.classesDirs))
+    classDirectories.from(files(sourceSets.main.output.classesDirs))
+    additionalSourceDirs.from(files(sourceSets.main.allJava.srcDirs))
+
+    doLast {
+        // Copy the Jacoco XML report to the desired location
+        copy {
+            from "${buildDir}/jacoco"
+            into coverageDestination
+            include "*.xml"
+        }
     }
 }
 
+// Run the customJacocoReport task during the build process
+check.dependsOn customJacocoReport
