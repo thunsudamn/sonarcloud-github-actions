@@ -8,17 +8,36 @@ on:
 jobs:
   sonarcloud-analysis:
     runs-on: ubuntu-latest
-
+    permissions:
+      pull-requests: write
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
           
-      - uses: SonarSource/sonarcloud-github-action@master
+      - name: Run Coverage
+        run: |
+          chmod +x gradlew
+          ./gradlew testCoverage
+
+      - name: Add coverage to PR
+        id: jacoco
+        uses: madrapps/jacoco-report@v1.6.1
+        with:
+          paths: |
+            ${{ github.workspace }}/**/build/reports/jacoco/prodNormalDebugCoverage/prodNormalDebugCoverage.xml,
+            ${{ github.workspace }}/**/build/reports/jacoco/**/debugCoverage.xml
+          token: ${{ secrets.GIT_TOKEN }}
+          min-coverage-overall: 40
+          min-coverage-changed-files: 60
+          
+      - name: Sonarcloud scan
+        uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-      - name: Upload Code Coverage to SonarCloud
-        run: |
-          curl -sL https://sonarcloud.io/api/project_badges/measure?project=thunsudamn_sonarcloud-github-actions | grep -oP '"value":\K.*'
