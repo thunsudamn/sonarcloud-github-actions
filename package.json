@@ -4,12 +4,20 @@
   "description": "A simple Node.js project",
   "author": "Thunsudamn",
   "scripts": {
-    "start": "node app.js",
-    "test": "jest"
+    "start:dev": "node src/server.js",
+    "test:dev": "jest --coverage"
   },
   "jest": {
-    "collectCoverage": true,
-    "coverageReporters": ["lcov", "text", "html"]
+    "testEnvironment":  "node",
+    "coveragePathIgnorePatterns": [
+        "/node_modules/"
+    ],
+    "testResultsProcessor":  "jest-sonar-reporter"
+  },
+  "jestSonar": {
+    "reportPath":  "coverage",
+    "reportFile":  "test-reporter.xml",
+    "indent":  2
   },
   "dependencies": {
     "express": "^4.17.1",
