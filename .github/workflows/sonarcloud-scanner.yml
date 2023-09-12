@@ -22,7 +22,7 @@ jobs:
       - name: Check for Gradle Wrapper
         run: |
           if [ ! -f gradlew ]; then
-            echo "Gradle wrapper script not found, installing Gradle..."
+            echo "Gradle wrapper script not found, initializing Gradle wrapper..."
             # Install Gradle
             curl -s "https://get.sdkman.io" | bash
             source "$HOME/.sdkman/bin/sdkman-init.sh"
