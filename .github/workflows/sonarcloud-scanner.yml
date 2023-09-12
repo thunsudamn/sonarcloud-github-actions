@@ -27,6 +27,8 @@ jobs:
             curl -s "https://get.sdkman.io" | bash
             source "$HOME/.sdkman/bin/sdkman-init.sh"
             sdk install gradle
+            # Initialize Gradle Wrapper
+            gradle wrapper
           fi
 
       - name: Make Gradle Wrapper Executable
