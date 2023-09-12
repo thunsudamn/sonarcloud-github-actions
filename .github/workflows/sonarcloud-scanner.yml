@@ -21,7 +21,9 @@ jobs:
           cache: gradle
           
       - name: Build and Test
-        run: ./gradlew clean build
+        run: |
+          ./gradlew clean build
+          chmod +x gradlew
 
       - name: Upload JaCoCo Report to SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
