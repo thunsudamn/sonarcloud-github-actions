@@ -2,10 +2,10 @@ name: SonarCloud Analysis
 
 on:
   push:
-    branches: [ $default-branch, $protected-branches ]
+    branches:
+      - main
   pull_request:
-    branches: [ $default-branch ]
-  workflow_dispatch:
+      types: [opened, synchronize, reopened]
 
 jobs:
   sonarcloud-analysis:
@@ -20,10 +20,25 @@ jobs:
         with:
           node-version: 14
 
+      - name: Install SonarScanner
+        run: |
+          npm install -g sonarqube-scanner
+          sonar-scanner --version
+
+      - name: Configure SonarCloud properties
+        run: |
+          echo "sonar.host.url=https://sonarcloud.io" >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
+          echo "sonar.organization=your-organization-key" >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
+          echo "sonar.projectKey=your-project-key" >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
+          echo "sonar.login=${{ secrets.SONARQUBE_TOKEN }}" >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
+          echo "sonar.sources=." >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
+          echo "sonar.language=js" >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
+          echo "sonar.exclusions=node_modules/**" >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
+
       - name: Run SonarCloud analysis
-        uses: sonarsource/sonarcloud-github-action@master
+        uses: sonarsource/sonarcloud-github-action@main
         with:
-          projectBaseDir: my-custom-directory
+          projectBaseDir: https://github.com/thunsudamn/sonarcloud-github-actions.git
           args: >
             -Dsonar.organization=thunsudamn
             -Dsonar.projectKey=thunsudamn
@@ -35,5 +50,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
-
-
