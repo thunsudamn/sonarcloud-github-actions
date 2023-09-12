@@ -11,8 +11,14 @@ test {
     finalizedBy jacocoTestReport
 }
 
-jacocoTestReport {
+task customReport(type: JacocoReport) {
+    // Other Jacoco configuration
+
+    // Enable or disable report types
     reports {
         xml.enabled = true
+        html.enabled = true
+        // Other report types
     }
 }
+
