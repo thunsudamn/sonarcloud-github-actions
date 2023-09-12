@@ -3,20 +3,16 @@ plugins {
     id 'jacoco'
 }
 
-repositories {
-    mavenCentral()
+jacoco {
+    toolVersion = '0.8.7'
 }
 
-dependencies {
-    testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+test {
+    finalizedBy jacocoTestReport
 }
 
 jacocoTestReport {
     reports {
-        xml.required = true
+        xml.enabled = true
     }
-}
-test.finalizedBy jacocoTestReport
-tasks.named('sonarqube').configure {
-    dependsOn test
 }
