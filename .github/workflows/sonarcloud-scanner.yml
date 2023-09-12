@@ -28,7 +28,6 @@ jobs:
 
       - name: Build and Test with JaCoCo
         run: |
-          # Replace these commands with your build and test commands using Gradle and JaCoCo
           gradle clean build
           gradle jacocoTestReport
 
