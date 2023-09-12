@@ -19,11 +19,12 @@ jobs:
           java-version: '11'  # Use the appropriate Java version
           distribution: 'adopt'  # Specify the distribution, e.g., 'adopt', 'adopt-openj9', 'adopt-hotspot', etc.
           cache: gradle
-          
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+        
       - name: Build and Test
-        run: |
-          ./gradlew clean build
-          chmod +x gradlew
+        run: ./gradlew clean build
 
       - name: Upload JaCoCo Report to SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
