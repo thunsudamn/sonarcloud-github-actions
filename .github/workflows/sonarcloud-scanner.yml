@@ -13,18 +13,12 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-
-      - name: Configure SonarCloud properties
-        run: |
-          cd /path/to/sonar-scanner-4.6.2.2472-linux
-          echo "sonar.host.url=https://sonarcloud.io" >> conf/sonar-scanner.properties
-          # echo "sonar.organization=thunsudamn" >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
-          # echo "sonar.projectKey=thunsudamn_sonarcloud-github-actions" >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
-          # echo "sonar.login=${{ secrets.SONAR_TOKEN }}" >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
-          # echo "sonar.python.coverage.reportPaths=coverage.xml" >> sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
-
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+          
+      - uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Upload Code Coverage to SonarCloud
+        run: |
+          curl -sL https://sonarcloud.io/api/project_badges/measure?project=thunsudamn_sonarcloud-github-actions | grep -oP '"value":\K.*'
