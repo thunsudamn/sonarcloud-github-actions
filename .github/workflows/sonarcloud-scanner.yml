@@ -22,6 +22,7 @@ jobs:
         run: |
           npm init -y
           npm install --save-dev jest
+          npm run test:dev
 
       # - name: Run tests with coverage
       #   run: npm test -- --coverage --config=jest.config.js
