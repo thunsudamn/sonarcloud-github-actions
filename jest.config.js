@@ -2,7 +2,7 @@ module.exports = {
   testEnvironment: 'node',
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.js$',
   collectCoverage: true,
-  coverageReporters: ['lcov', 'text-summary'],
+  coverageReporters: ['cobertura', 'lcov', 'text'],
   reporters: [
     'default',
     ['jest-sonar', { outputDirectory: 'coverage', outputName: 'test-reporter.xml' }]
