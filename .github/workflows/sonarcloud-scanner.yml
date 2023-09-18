@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm init -y
-          npm install jest @types/jest express supertest --dev
+          npm install --save-dev jest
 
       # - name: Run tests with coverage
       #   run: npm test -- --coverage --config=jest.config.js
