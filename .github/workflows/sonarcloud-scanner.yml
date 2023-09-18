@@ -26,8 +26,6 @@ jobs:
           npm update chalk
           npm install jest-sonar --save-dev
           npm run test:dev
-          sonar-scanner -X
-
 
       - name: Run tests with coverage
         run: npm test -- --coverage --config=jest.config.js
