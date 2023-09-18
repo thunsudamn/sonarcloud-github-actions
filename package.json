@@ -4,7 +4,8 @@
   "description": "My Node.js Project",
   "main": "index.js",
   "scripts": {
-    "test": "test:dev"
+    "start:dev": "node src/server.js",
+    "test:dev": "jest --coverage"
   },
   "author": "noone",
   "license": "MIT",
