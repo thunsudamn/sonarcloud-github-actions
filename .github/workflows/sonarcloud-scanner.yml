@@ -26,7 +26,7 @@ jobs:
           echo "here 2"
           npm install --save-dev jest jest-sonar-reporter
           echo "here 3"
-          npm run test:dev --config jest.config.js
+          npm run test:dev
           echo "here 4"
 
       # - name: Run tests with coverage
