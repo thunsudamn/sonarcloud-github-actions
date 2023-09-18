@@ -5,6 +5,6 @@ module.exports = {
   coverageReporters: ['lcov', 'text-summary'],
   reporters: [
     'default',
-    ['jest-sonar-reporter', { outputDirectory: 'coverage', outputName: 'test-reporter.xml' }]
+    ['jest-sonar', { outputDirectory: 'coverage', outputName: 'test-reporter.xml' }]
   ]
 };
