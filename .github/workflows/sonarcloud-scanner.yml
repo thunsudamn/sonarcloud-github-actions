@@ -23,17 +23,18 @@ jobs:
           npm init -y
           echo "here 1"
           npm install jest --save-dev
+          npm list jest
           echo "here 2"
-          npm install jest-reporters --save-dev
-          rm -rf node_modules
-          rm package-lock.json
-          echo "here 3"
-          npm update
-          yarn install
-          yarn upgrade
-          npx jest --clearCache
-          npx jest --config jest.config.js
-          echo "here 4"
+          # npm install jest-reporters --save-dev
+          # rm -rf node_modules
+          # rm package-lock.json
+          # echo "here 3"
+          # npm update
+          # yarn install
+          # yarn upgrade
+          # npx jest --clearCache
+          # npx jest --config jest.config.js
+          # echo "here 4"
 
       # - name: Run tests with coverage
       #   run: npm test -- --coverage --config=jest.config.js
