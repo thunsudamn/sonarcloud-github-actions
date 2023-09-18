@@ -1,0 +1,15 @@
+{
+  "name": "my-nodejs-project",
+  "version": "1.0.0",
+  "description": "My Node.js Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "author": "noone",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^27.0.0",
+    "jest-sonar-reporter": "^2.0.0"
+  }
+}
