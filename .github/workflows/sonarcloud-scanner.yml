@@ -27,6 +27,7 @@ jobs:
           npm install --save-dev jest jest-sonar-reporter
           echo "here 3"
           npm update
+          yarn install
           yarn upgrade
           npx jest --clearCache
           npx jest --config jest.config.js
