@@ -4,7 +4,7 @@ const port =  8080
 
 app.get('/', (req, res) => {
     return res.status(200).json({ 
-      nome:  'Learn SonarQube code coverage',
+      name:  'Learn SonarQube code coverage',
       status: true 
     });
 });
