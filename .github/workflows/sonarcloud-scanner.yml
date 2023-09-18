@@ -22,6 +22,7 @@ jobs:
         run: |
           npm init -y
           npm install --save-dev jest
+          npm install --save-dev jest jest-sonar-reporter
           npm run test:dev
 
       # - name: Run tests with coverage
