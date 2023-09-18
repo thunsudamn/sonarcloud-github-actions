@@ -20,24 +20,10 @@ jobs:
           
       - name: Install dependencies
         run: |
-          # npm init -y
-          # echo "here 1"
-          # npm install jest --save-dev
-          # npm list jest
-          # echo "here 2"
-          # npm install --save-dev jest jest-sonar-reporter
-          # npm list jest-sonar-reporter
-          # echo "here 3"
-          # rm -rf node_modules
-          # rm package-lock.json
-          # npm install
-          # npm update
-          # yarn install
-          # yarn upgrade
-          # npx jest --clearCache
           npm install
           npm install supertest
           npm install express
+          npm update chalk
           npm install jest-sonar --save-dev
           npm run test:dev
           echo "here 4"
