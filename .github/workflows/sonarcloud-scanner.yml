@@ -24,7 +24,8 @@ jobs:
           echo "here 1"
           npm install --save-dev jest
           echo "here 2"
-          npm install --save-dev jest jest-sonar-reporter
+          npm install jest-sonar-reporter --save-dev
+          npm update jest-sonar-reporter
           echo "here 3"
           npm update
           yarn install
