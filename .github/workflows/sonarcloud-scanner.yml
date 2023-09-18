@@ -35,7 +35,7 @@ jobs:
           # yarn install
           # yarn upgrade
           # npx jest --clearCache
-          npx jest --config jest.config.js
+          npm run test:dev
           echo "here 4"
 
       - name: Run tests with coverage
