@@ -22,10 +22,11 @@ jobs:
         run: |
           npm init -y
           echo "here 1"
-          npm install --save-dev jest
+          npm install jest --save-dev
           echo "here 2"
-          npm install jest-sonar-reporter --save-dev
-          npm update jest-sonar-reporter
+          npm install jest-reporters --save-dev
+          rm -rf node_modules
+          rm package-lock.json
           echo "here 3"
           npm update
           yarn install
