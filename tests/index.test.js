@@ -1,4 +1,4 @@
-src/tests/index.test.js
+tests/index.test.js
 
     const request =  require('supertest')
     const server =  require('../server')
