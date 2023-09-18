@@ -28,6 +28,9 @@ jobs:
           npm install --save-dev jest jest-sonar-reporter
           npm list jest-sonar-reporter
           echo "here 3"
+          rm -rf node_modules
+          rm package-lock.json
+          npm install
           # npm update
           # yarn install
           # yarn upgrade
