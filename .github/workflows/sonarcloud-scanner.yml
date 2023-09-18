@@ -26,6 +26,8 @@ jobs:
           echo "here 2"
           npm install --save-dev jest jest-sonar-reporter
           echo "here 3"
+          npm update
+          yarn upgrade
           npx jest --clearCache
           npx jest --config jest.config.js
           echo "here 4"
