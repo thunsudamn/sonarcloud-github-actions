@@ -36,6 +36,7 @@ jobs:
           # yarn upgrade
           # npx jest --clearCache
           npm install
+          npm install supertest
           npm install jest-sonar --save-dev
           npm run test:dev
           echo "here 4"
