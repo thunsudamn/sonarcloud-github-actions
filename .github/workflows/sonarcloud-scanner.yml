@@ -35,8 +35,8 @@ jobs:
           # npx jest --config jest.config.js
           # echo "here 4"
 
-      # - name: Run tests with coverage
-      #   run: npm test -- --coverage --config=jest.config.js
+      - name: Run tests with coverage
+        run: npm test -- --coverage --config=jest.config.js
 
       - name: SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
